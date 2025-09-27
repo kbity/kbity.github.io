@@ -1,1 +1,1 @@
-Documentation for my discord bots
+Documentation for my discord bots + MariWiki
