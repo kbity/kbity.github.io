@@ -12,4 +12,4 @@ Select one of these Manuals to begin:
 - [Billion Reservoir SSD](/br/)
 - [Mari's Other Stuff](/mari/)
 
--# Please note that Most of these Manuals are currently missing
+<small>Please note that Most of these Manuals are currently missing</small>
