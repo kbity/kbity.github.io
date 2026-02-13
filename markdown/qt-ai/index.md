@@ -1,3 +1,3 @@
-# Bird
+# QT-AI, Qups, and Qettle
 ---
-Sample Text
+Not Finished

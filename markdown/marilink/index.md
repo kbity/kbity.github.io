@@ -1,3 +1,3 @@
-# Bird
+# MariLink
 ---
 Sample Text
