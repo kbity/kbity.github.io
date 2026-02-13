@@ -34,7 +34,7 @@ The Following is a List of Computers I currently own
 
 - HP G62
 
-- HP Pavilion zv6000
+- [HP Pavilion zv6000](zv6000.html)
 
 - HP ProBook 6570b
 
