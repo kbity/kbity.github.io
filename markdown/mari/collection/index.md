@@ -14,17 +14,27 @@ The Following is a List of Computers I currently own
 
 - Dell Inspiron 1501
 
+- Dell Inspiron 1520
+
+- Dell Inspiron 8000 (2021)
+
 - Dell Inspiron 8000 (2025)
+
+- Dell Latitude C840
 
 - Dell Latitude D630
 
 - Dell Latitude D620
+
+- Dell Latitude E6420
 
 - Dell Precision M6300
 
 - Dell Vostro 1000
 
 - Dell Vostro 1500
+
+- [Fujitsu Lifebook T4215](t4215.html)
 
 - Gateway 400SD4
 
@@ -47,8 +57,6 @@ The Following is a List of Computers I currently own
 - Toshiba Satelite L655 (2025)
 
 ## Laptops (Non-Functional)
-
-- Dell Inspiron 8000 (2021)
 
 - Dell Inspiron 8100
 
