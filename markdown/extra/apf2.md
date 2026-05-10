@@ -68,7 +68,7 @@ B#G#R#B#G#R#B#G#R#Y#M#C#Y#M#C#Y#M#C#W#g#b#W#g#b#W#g#b#
 ```
 
 ## Trivia
-* For 1993, this format is rather dated, with its limited 95 color palette and simplistic compression, when GIF existed for 6 years at the time. The 1994 revision helps but it still lags behind formats such as JPEG-LS ignoring alpha.
+* For 1993, this format is rather dated, with its limited 95 color palette and simplistic compression, when GIF existed for 6 years at the time. The 1994 revision helps but it still lags behind formats such as JPEG-LS, ignoring alpha support.
 * Despite the simple compression, APF2 can sometimes compress an image better than an RGB PNG, and occasionally even Indexed PNG.
 * Due to using pure ASCII, APF2s can technically be packaged using 7 bits for a character rather than 8, reducing file sizes by ~12.5%. This is called an A2CI (APF2 Compacted Image).
 * APF2 also has unofficial provisions for gz compression, going under the name A2G (APF2 GZip).
