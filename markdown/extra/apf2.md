@@ -15,7 +15,7 @@
 
 **Aperture Picture Format 2** (**APF2**, often shortened to **AF2** and officially pronounced as "Ayph-2") is a lossless bitmap image format.
 It was designed by Aperture Laboratories in 1993 as an optimized ASCII image format using RLE and is backwards compatible with the 1985 APF.
-APF2 Supports a palette of 95 colors (corresponding to the 95 printable ASCII characters), transparency (which takes up a palette space), animation, and more optimized 2-color 1985 APF-styled data.
+APF2 supports a palette of 95 colors (corresponding to the 95 printable ASCII characters), transparency (which takes up a palette space), animation, and more optimized 2-color 1985 APF-styled data.
 An APF can be trivially upgraded to APF2 with a simple header-swap as is.
 The format supports interleaved data, scanning the image bottom-to-top, skipping X rows in order to form a more visible image earlier into transmission.
 
@@ -41,7 +41,7 @@ Resolution is formatted as: `WxH`, with W being a width, and H being a height<br
 Flags specify information about the image, with 't' indicating transparency, 'm' indicating multiple frames, 'l' specifying that the image has 2 colors, 'd' specifying usage of 9025 color mode, and 'a' meaning colors are stored as RGBA instead of RGB.
 
 ## Encoding
-APF2 encoding uses Run-length Encoding (RLE). Worst case for the format is 3 bytes per pixel (2 Character Palette index and run-length of 1).<br>
+APF2 encoding uses Run-length Encoding (RLE). Worst case for the format is 3 bytes per pixel (2-character palette index and run-length of 1).<br>
 Lineskip can be used to progressively decode an image with only some of the data. Scanning starts bottom to top and skips N rows, where N is the line skip value.<br>
 A run is specified using `PR` (or `PPR` under DIM) with P/PP being the palette index and R being the length (encoded in ASCII base95, with space being 0 and ~ being 94)<br>
 Palette entries are encoded as `P######`, `PP######`, `P########`, or `PP########` with P/PP being the ASCII palette index and the hashtags being the 24-bit RGB hex code for the color or 32-bit RGBA hex code for the color.<br>
