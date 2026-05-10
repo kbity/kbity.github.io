@@ -17,7 +17,7 @@
 It was designed by Aperture Laboratories in 1993 as an optimized ASCII image format using RLE and is backwards compatible with the 1985 APF.
 APF2 Supports a palette of 95 colors (corresponding to the 95 printable ASCII characters), transparency (which takes up a palette space), animation, and more optimized 2-color 1985 APF-styled data.
 An APF can be trivially upgraded to APF2 with a simple header-swap as is.
-The format supports interleaved data, scanning the image bottom-to-top, skipping X amounts of rows in order to form a more visible image earlier into transmission.
+The format supports interleaved data, scanning the image bottom-to-top, skipping X rows in order to form a more visible image earlier into transmission.
 
 The 1994 version of APF2 introduces 3 new features: The Dual-Indexed Mode (DIM), Alpha in Palette, and Frame Delay.
 Frame Delay is backwards compatible and will work just fine in APF2-1993 tooling, but DIM and alpha require newer software to use.
@@ -45,7 +45,7 @@ APF2 encoding uses Run-length Encoding (RLE). Worst case for the format is 3 byt
 Lineskip can be used to progressively decode an image with only some of the data. Scanning starts bottom to top and skips N rows, where N is the line skip value.<br>
 A run is specified using `PR` (or `PPR` under DIM) with P/PP being the palette index and R being the length (encoded in ASCII base95, with space being 0 and ~ being 94)<br>
 Palette entries are encoded as `P######`, `PP######`, `P########`, or `PP########` with P/PP being the ASCII palette index and the hashtags being the 24-bit RGB hex code for the color or 32-bit RGBA hex code for the color.<br>
-With transparency, the space pallete entry is ignored and transparency is written instead.
+With transparency, the space palette entry is ignored and transparency is written instead.
 It is considered good practice to specify it with a color like FF00FF or 000000 to support encoders without transparency support.
 
 The following is an example of an APF2 image
@@ -58,7 +58,7 @@ R#G#B#R#G#B#R#G#B#C#M#Y#C#M#Y#C#M#Y#b#g#W#b#g#W#b#g#W#
 This image as a PNG is the following:
 ![Image](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAkAAAAJCAMAAAGgSMa0AAAAAXNSR0IB2cksfwAAAARnQU1BAACxjwv8YQUAAAAgY0hSTQAAeiYAAICEAAD6AAAAgOgAAHUwAADqYAAAOpgAABdwnLpRPAAAABtQTFRFAAAAAAD//wAA/wD/mZmZAP8AAP////8A////AsaPigAAAAlwSFlzAAAuIwAALiMBeKU/dgAAAAd0SU1FB+oEGwEtMuCshUIAAAA9SURBVAjXTYs3DgAwDAJxA///xSHKkgVRDmCRgcaAJThRtwB6veSEffc+YZnJmXhyKdcGSU8l6XPpt6mIAzoPAUVll3//AAAAAElFTkSuQmCC)
 
-The following is an example of an 1994 revision APF2 image, using the alpha and animation speed features.
+The following is an example of a 1994 revision APF2 image, using the alpha and animation speed features.
 ```
 APERTURE IMAGE FORMAT (c) 1994
 9x9,ma,1,This is a sample APF2 image using 1994's Alpha feature and animation speed feature,1000
@@ -74,6 +74,6 @@ B#G#R#B#G#R#B#G#R#Y#M#C#Y#M#C#Y#M#C#W#g#b#W#g#b#W#g#b#
 * APF2 also has unofficial provisions for gz compression, going under the name A2G (APF2 GZip).
 * APF2 is sometimes used to embed images directly into code and documents, similarly to XBM and XPM.
 * The format only got 1 major update past inception, the 1994 revision. The 9025 color palette is notable as most paletted images only go up to 256 colors, 1 byte per color.
-* If the M flag is unset but multiple data streams are present, the image can be treated as having layers, with image 0 being a composite or base for layers to overlay onto (which can be interpereted in different ways depending on the decoder and use case).
+* If the M flag is unset but multiple data streams are present, the image can be treated as having layers, with image 0 being a composite or base for layers to overlay onto (which can be interpreted in different ways depending on the decoder and use case).
 
 <small>*This Aperture Science-related article is a stub. You can help Maripedia by adding missing information.*</small>
