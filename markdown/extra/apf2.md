@@ -32,16 +32,17 @@ The convention for the end of a line is given by hex code 0x0A, or `<LF>`, unlik
 The APF2 file format has the following basic structure: 
 ```
 Header<LF>
-<resolution>,<flags>,<line skip>,<description><LF>
+<resolution>,<flags>,<line skip>,<description>,<Animation Frame Delay (APF2-1994)><LF>
 palette<LF>
 frame data, separated by newlines
 EOF
 ```
 Resolution is formatted as: `WxH`, with W being a width, and H being a height<br>
-Flags specify information about the image, with 't' indicating transparency, 'm' indicating multiple frames, and 'l' specifying that the image has 2 colors.
+Flags specify information about the image, with 't' indicating transparency, 'm' indicating multiple frames, 'l' specifying that the image has 2 colors, 'd' specifying usage of 9025 color mode, and 'a' meaning colors are stored as RGBA instead of RGB.
 
 ## Encoding
-APF2 encoding uses Run-length Encoding (RLE). Worst case for the format is 2 bytes per pixel (Palette index and run-length of 1).<br>
+APF2 encoding uses Run-length Encoding (RLE). Worst case for the format is 3 bytes per pixel (2 Character Palette index and run-length of 1).<br>
+Lineskip can be used to progressively decode an image with only some of the data. Scanning starts bottom to top and skips N rows, where N is the line skip value.<br>
 A run is specified using `PR` (or `PPR` under DIM) with P/PP being the palette index and R being the length (encoded in ASCII base95, with space being 0 and ~ being 94)<br>
 Palette entries are encoded as `P######`, `PP######`, `P########`, or `PP########` with P/PP being the ASCII palette index and the hashtags being the 24-bit RGB hex code for the color or 32-bit RGBA hex code for the color.<br>
 With transparency, the space pallete entry is ignored and transparency is written instead.
@@ -57,7 +58,7 @@ R#G#B#R#G#B#R#G#B#C#M#Y#C#M#Y#C#M#Y#b#g#W#b#g#W#b#g#W#
 This image as a PNG is the following:
 ![Image](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAkAAAAJCAMAAAGgSMa0AAAAAXNSR0IB2cksfwAAAARnQU1BAACxjwv8YQUAAAAgY0hSTQAAeiYAAICEAAD6AAAAgOgAAHUwAADqYAAAOpgAABdwnLpRPAAAABtQTFRFAAAAAAD//wAA/wD/mZmZAP8AAP////8A////AsaPigAAAAlwSFlzAAAuIwAALiMBeKU/dgAAAAd0SU1FB+oEGwEtMuCshUIAAAA9SURBVAjXTYs3DgAwDAJxA///xSHKkgVRDmCRgcaAJThRtwB6veSEffc+YZnJmXhyKdcGSU8l6XPpt6mIAzoPAUVll3//AAAAAElFTkSuQmCC)
 
-The following is an example of an 1994 revision APF2 image
+The following is an example of an 1994 revision APF2 image, using the alpha and animation speed features.
 ```
 APERTURE IMAGE FORMAT (c) 1994
 9x9,ma,1,This is a sample APF2 image using 1994's Alpha feature and animation speed feature,1000
@@ -67,10 +68,12 @@ B#G#R#B#G#R#B#G#R#Y#M#C#Y#M#C#Y#M#C#W#g#b#W#g#b#W#g#b#
 ```
 
 ## Trivia
-* For 1993, this format is rather dated, with its limited 95 color palette and simplistic compression, when GIF existed for 6 years at the time.
+* For 1993, this format is rather dated, with its limited 95 color palette and simplistic compression, when GIF existed for 6 years at the time. The 1994 revision helps but it still lags behind formats such as JPEG-LS ignoring alpha.
 * Despite the simple compression, APF2 can sometimes compress an image better than an RGB PNG, and occasionally even Indexed PNG.
-* Due to using pure ASCII, APF2s can technically be packaged using 7 bits for a character rather than 8, reducing file sizes by ~12.5%
+* Due to using pure ASCII, APF2s can technically be packaged using 7 bits for a character rather than 8, reducing file sizes by ~12.5%. This is called an A2CI (APF2 Compacted Image).
+* APF2 also has unofficial provisions for gz compression, going under the name A2G (APF2 GZip).
 * APF2 is sometimes used to embed images directly into code and documents, similarly to XBM and XPM.
 * The format only got 1 major update past inception, the 1994 revision. The 9025 color palette is notable as most paletted images only go up to 256 colors, 1 byte per color.
+* If the M flag is unset but multiple data streams are present, the image can be treated as having layers, with image 0 being a composite or base for layers to overlay onto (which can be interpereted in different ways depending on the decoder and use case).
 
 <small>*This Aperture Science-related article is a stub. You can help Maripedia by adding missing information.*</small>
