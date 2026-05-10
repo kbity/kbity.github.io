@@ -17,13 +17,13 @@
 It was designed by Aperture Laboratories in 1993 as an optimized ASCII image format using RLE and is backwards compatible with the 1985 APF.
 APF2 Supports a palette of 95 colors (corresponding to the 95 printable ASCII characters), transparency (which takes up a palette space), animation, and more optimized 2-color 1985 APF-styled data.
 An APF can be trivially upgraded to APF2 with a simple header-swap as is.
-The Format supports interleaved data, scanning the image bottom-to-top, skipping X amounts of rows in order to form a more visible image earlier into transmission.
+The format supports interleaved data, scanning the image bottom-to-top, skipping X amounts of rows in order to form a more visible image earlier into transmission.
 
 The 1994 version of APF2 introduces 3 new features: The Dual-Indexed Mode (DIM), Alpha in Palette, and Frame Delay.
 Frame Delay is backwards compatible and will work just fine in APF2-1993 tooling, but DIM and alpha require newer software to use.
 
 ## APF2 Format Information
-The Aperture Picture Format is an ASCII file that can be identified by its plaintext header: 
+APF2 is an ASCII file that can be identified by its plaintext header: 
 ```
 APERTURE IMAGE FORMAT (c) 1993
 ```
