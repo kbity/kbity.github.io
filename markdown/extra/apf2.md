@@ -3,9 +3,9 @@
 
 <small>From Maripedia, the Maristocratic encyclopedia</small>
 
-| Field  | Aperture Picture Format 2  |
+| Field | Aperture Picture Format 2 |
 |-----------|------|
-| Filename extension      | `.apf2`, `.af2`, `.a2k` (2000 variant), `.a2gz` (gzip-compressed), `.aif2` (rarely) |
+| Filename extension | `.apf2`, `.af2`, `.a2k` (2000 variant), `.a2gz` (gzip-compressed), `.aif2` (rarely) |
 | MIME Types | `image/x-aperture-picture-1993`, `image/x-aperture-picture-1994`, `image/x-aperture-picture-2000` (stills), `video/x-aperture-picture-1993`, `video/x-aperture-picture-1994`, `video/x-aperture-picture-2000` (animations) |
 | Uniform Type Identifiers (UTI) | `com.aperturescience.apf2` |
 | Developed by | Aperture Laboratories (1993, 1994), Focal Laboratories (2000) |
@@ -22,9 +22,9 @@ An APF can be trivially upgraded to APF2 with a simple header swap.
 The format supports interleaved frame data, scanning the image bottom-to-top (or top-to-bottom in the 2000 version, with the `u` flag), skipping X rows in order to form a more visible image earlier into transmission.
 
 The 1994 version of APF2 introduces 3 new features: the Dual-Indexed Mode (DIM), Alpha in Palette, and Frame Delay.
-Frame Delay is backwards compatible and will work just fine in APF2-1993-only tooling (extra field is ignored), but DIM and alpha require newer APF2 software to use.
+Frame Delay is backwards compatible and will work just fine in APF2-1993-only tooling (the extra field is ignored), but DIM and alpha require newer APF2 software to use.
 
-The later 2000 version of APF2 was made by Focal Development Company (dba Focal Laboratories), one of the successor companies to Aperture Science, Inc. Focal made the format's spec open (albiet paywalled) in 2002.
+The later 2000 version of APF2 was made by Focal Development Company (dba Focal Laboratories), one of the successor companies to Aperture Science, Inc. Focal made the format's spec open (albeit paywalled) in 2002.
 
 ## APF2 Format Information
 APF2 is an ASCII file that can be identified by its plaintext header: 
@@ -41,18 +41,18 @@ palette<LF>
 frame data, separated by newlines
 EOF
 ```
-Resolution is formatted as: `WxH`, with W being a width, and H being a height<br>
+Resolution is formatted as `WxH`, with W being the width in pixels and H being the height in pixels.<br>
 Flags specify information about the image, with 't' indicating transparency, 'm' indicating multiple frames, 'l' specifying that the image has 2 colors, 'd' specifying usage of 9025 color mode, and 'a' meaning colors are stored as RGBA instead of RGB.
 
 ## Encoding
-APF2 encoding uses Run-length Encoding (RLE). Worst case for the format is 3 bytes per pixel (2-character palette index and run-length of 1).<br>
-Lineskip can be used to progressively decode an image with only some of the data. Scanning starts bottom to top and skips N rows, where N is the line skip value.<br>
-A run is specified using `PR` (or `PPR` under DIM) with P/PP being the palette index and R being the length (encoded in ASCII base95, with space being 0 and ~ being 94)<br>
+APF2 encoding uses run-length encoding (RLE). The worst case for the format depends on the mode. For APF2-1994, it is 3 bytes per pixel (2-character palette index and run-length of 1).<br>
+Lineskip can be used to progressively decode an image with only some of the data. Scanning starts from the bottom and goes up whilst skipping N rows, where N is the line skip value.<br>
+A run is specified using `PR` (or `PPR` under DIM) with P/PP being the palette index and R being the length (encoded in ASCII base95, with space being 0 and ~ being 94).<br>
 Palette entries are encoded as `P######`, `PP######`, `P########`, or `PP########` with P/PP being the ASCII palette index and the hashtags being the 24-bit RGB hex code for the color or 32-bit RGBA hex code for the color.<br>
-With transparency, the space palette entry is ignored and transparency is written instead.
+With transparency, the space palette entry is ignored, and transparency is written instead.
 It is considered good practice to specify it with a color like FF00FF or 000000 to support encoders without transparency support.
 
-APF2 also inherets the same alternating run encoding method used in the APF under the l mode. The space normally used for the image's palette is instead filled with a single period, or can follow the bg.fg format to set the 2 colors used (default is black and white).
+APF2 also inherits the same alternating run encoding method used in the APF under the l mode. The space normally used for the image's palette is instead filled with a single period or can follow the bg.fg format to set the 2 colors used (default is black and white).
 
 The following is an example of an APF2 image
 ```
@@ -75,25 +75,25 @@ B#G#R#B#G#R#B#G#R#Y#M#C#Y#M#C#Y#M#C#W#g#b#W#g#b#W#g#b#
 
 ## Encoders
 APF2 has had a few different encoder/decoder implementations with various licenses.
-| Name | Developer  | Free? | Notes |
+| Name | Developer | Free? | Notes |
 |-----------|------|------|------|
-| ApertureDraw 2.0A+ | Aperture Science, Inc. | No, commercial software | used APF2 as a project format. 1994 exporting was added in 2.4A |
+| ApertureDraw 2.0A+ | Aperture Science, Inc. | No, commercial software | Used APF2 as a project format. 1994 exporting was added in 2.4A |
 | libapf2 | Independent Scientists Group (ISG) | Yes, BSD-3 Clause | Reverse engineered, limited support for format features |
 | apf2k | Focal Laboratories | No, Focal Open Freeware License | Higher Quality Encoder, considered to be the reference implementation |
 | appiclib | Marvin R. and contributors | Yes, GNU GPL | Fork of libapf2 with more broad support for the 1993 and 1994 versions of the format |
 | alir2 | The ImageWizard Project | Yes, GNU GPL | Decoder only |
 | apftool | Maristocratic Communications | Yes, Apache 2.0 License | Implements all APF2-2000 features |
-| apf2tran | Mari K. | Yes, Apache 2.0 License | Simple Lossless and Near-lossless transcoding of PGM/PPM files, and editing existing APF2s only |
+| apf2tran | Mari K. | Yes, Apache 2.0 License | Simple lossless and near-lossless transcoding of PGM/PPM files, and editing existing APF2s only |
 | jspf2 | Mari K. | Yes, MIT License | Web browser polyfill |
 
 ## Trivia
-* For 1993, this format is rather dated, with its limited 95 color palette and simplistic compression, when GIF existed for 6 years at the time. The 1994 revision helps but it still lags behind formats such as Lossless JPEG, ignoring alpha support.
-* Despite the simple compression, APF2 can sometimes compress an image better than an RGB PNG, and occasionally even Indexed PNG.
+* For 1993, this format is rather dated, with its limited 95-color palette and simplistic compression, when GIF existed for 6 years at the time. The 1994 revision helps, but it still lags behind formats such as lossless JPEG, ignoring alpha support.
+* Despite the simple compression, APF2 can sometimes compress an image better than an RGB PNG with the same pixel data.
 * Due to using pure ASCII, APF2s can technically be packaged using 7 bits for a character rather than 8, reducing file sizes by ~12.5%. This is informally called an A2CI (APF2 Compacted Image).
 * APF2 also has provisions for gz compression, going under the name a2gz (apf2 GZip).
 * APF2 is sometimes used to embed images directly into code and documents, similarly to XBM and XPM.
-* The format had 2 major update past inception, the 1994 revision and the 2000 revision. The 9025 color palette is notable as most paletted images only go up to 256 colors, 1 byte per color.
-* The 2000 version of APF2 adds a ton of new features (such as support for up to 32-bit RGBA, Top-down scanning, and disabling the RLE), making it a genuinely versatile image format
-* If the M flag is unset but multiple data streams are present, the image can be treated as having layers, with image 0 being a composite or base for layers to overlay onto (which can be interpreted in different ways depending on the decoder and use case).
+* The format had 2 major updates past inception, the 1994 revision and the 2000 revision. The 9025 color palette is notable, as most paletted images only go up to 256 colors, or 1 byte per color.
+* The 2000 version of APF2 adds several new features (such as support for up to 32-bit RGBA, top-down scanning, and disabling the RLE), making it a genuinely versatile image format.
+* If the M flag is unset but multiple data streams are present, the image can be treated as having layers, which can be interpreted in different ways depending on the decoder and use case.
 
 <small>*This Aperture Science-related article is a stub. You can help Maripedia by adding missing information.*</small>
