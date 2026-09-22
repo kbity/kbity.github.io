@@ -42,12 +42,12 @@ img:not(.no-crop) {
 <td><code>.apf2</code>, <code>.af2</code>, <code>.a2k</code> (2000 varient), <code>.a2gz</code> (gzip-compressed), <code>.aif2</code> (rarely)</td>
 </tr>
 <tr>
-<td>MIME Type</td>
-<td><code>image/x-aperture-picture-1993</code>, <code>image/x-aperture-picture-1994</code>, <code>image/x-aperture-picture-2000</code></td>
+<td>MIME Types</td>
+<td><code>image/x-aperture-picture-1993</code>, <code>image/x-aperture-picture-1994</code>, <code>image/x-aperture-picture-2000</code> (stills), <code>video/x-aperture-picture-1993</code>, <code>video/x-aperture-picture-1994</code>, <code>video/x-aperture-picture-2000</code> (animations)</td>
 </tr>
 <tr>
-<td>Uniform Type Identifier (UTI)</td>
-<td><code>public.image.apf2</code> (1993), <code>public.image.apf2</code> (1994)</td>
+<td>Uniform Type Identifiers (UTI)</td>
+<td><code>com.aperturescience.apf2</code></td>
 </tr>
 <tr>
 <td>Developed by</td>
@@ -87,7 +87,7 @@ Frame Delay is backwards compatible and will work just fine in APF2-1993-only to
 <p>APF2 is an ASCII file that can be identified by its plaintext header: </p>
 <pre><code>APERTURE IMAGE FORMAT (c) 1993
 </code></pre>
-<p>The convention for the end of a line is given by hex code 0x0A, or <code>&lt;LF&gt;</code>, unlike the original 1985 APF's convention of 0x0D0D0A (<code>&lt;CR CR LF&gt;</code>), however, either is supported.</p>
+<p>The year 1993 can also be 1994 or 2000. The convention for the end of a line is given by hex code 0x0A, or <code>&lt;LF&gt;</code>, unlike the original 1985 APF's convention of 0x0D0D0A (<code>&lt;CR CR LF&gt;</code>), however, either is supported.</p>
 <p>The APF2 file format has the following basic structure: </p>
 <pre><code>Header&lt;LF&gt;
 &lt;resolution&gt;,&lt;flags&gt;,&lt;line skip&gt;,&lt;description&gt;,&lt;Animation Frame Delay (APF2-1994)&gt;&lt;LF&gt;

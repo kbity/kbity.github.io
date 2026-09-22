@@ -6,8 +6,8 @@
 | Field  | Aperture Picture Format 2  |
 |-----------|------|
 | Filename extension      | `.apf2`, `.af2`, `.a2k` (2000 varient), `.a2gz` (gzip-compressed), `.aif2` (rarely) |
-| MIME Type | `image/x-aperture-picture-1993`, `image/x-aperture-picture-1994`, `image/x-aperture-picture-2000` |
-| Uniform Type Identifier (UTI) | `public.image.apf2` (1993), `public.image.apf2` (1994) |
+| MIME Types | `image/x-aperture-picture-1993`, `image/x-aperture-picture-1994`, `image/x-aperture-picture-2000` (stills), `video/x-aperture-picture-1993`, `video/x-aperture-picture-1994`, `video/x-aperture-picture-2000` (animations) |
+| Uniform Type Identifiers (UTI) | `com.aperturescience.apf2` |
 | Developed by | Aperture Laboratories (1993, 1994), Focal Laboratories (2000) |
 | Initial release | 1993; 33 years ago |
 | Latest release | 2000; 26 years ago |
@@ -31,7 +31,7 @@ APF2 is an ASCII file that can be identified by its plaintext header:
 ```
 APERTURE IMAGE FORMAT (c) 1993
 ```
-The convention for the end of a line is given by hex code 0x0A, or `<LF>`, unlike the original 1985 APF's convention of 0x0D0D0A (`<CR CR LF>`), however, either is supported.
+The year 1993 can also be 1994 or 2000. The convention for the end of a line is given by hex code 0x0A, or `<LF>`, unlike the original 1985 APF's convention of 0x0D0D0A (`<CR CR LF>`), however, either is supported.
 
 The APF2 file format has the following basic structure: 
 ```
