@@ -5,17 +5,17 @@
 
 | Field  | Aperture Picture Format 2  |
 |-----------|------|
-| Filename extension      | `.apf2`, `.af2`, `.aif2` (rarely) |
-| MIME Type | `image/x-aperture-picture-1993`, `image/x-aperture-picture-1994` |
-| Uniform Type Identifier (UTI) | `public.image.apf2` (1993), `public.video.apf2` (1994) |
-| Developed by | Aperture Laboratories |
+| Filename extension      | `.apf2`, `.af2`, `.a2k` (2000 varient), `.a2gz` (gzip-compressed), `.aif2` (rarely) |
+| MIME Type | `image/x-aperture-picture-1993`, `image/x-aperture-picture-1994`, `image/x-aperture-picture-2000` |
+| Uniform Type Identifier (UTI) | `public.image.apf2` (1993), `public.image.apf2` (1994) |
+| Developed by | Aperture Laboratories (1993, 1994), Focal Laboratories (2000) |
 | Initial release | 1993; 33 years ago |
-| Latest release | 1994; 32 years ago |
+| Latest release | 2000; 26 years ago |
 | Type of format | computer animation, plain text |
 | Open format? | No |
-| Free format? | Yes (patent applications rejected) |
+| Free format? | Yes |
 
-**Aperture Picture Format 2** (**APF2**, sometimes shortened to **AF2** and officially pronounced as "Ayph-2") is a lossless bitmap image format.
+**Aperture Picture Format 2** (**APF2**, officially pronounced as "Ayph-2") is a lossless bitmap image format.
 It was designed by Aperture Laboratories in 1993 as an optimized ASCII image format using RLE and is backwards compatible with the 1985 APF.
 APF2 supports a palette of 95 colors (corresponding to the 95 printable ASCII characters), transparency (which takes up a palette space), animation, and more optimized 2-color 1985 APF-styled data.
 An APF can be trivially upgraded to APF2 with a simple header-swap.
@@ -23,6 +23,8 @@ The format supports interleaved data, scanning the image bottom-to-top, skipping
 
 The 1994 version of APF2 introduces 3 new features: The Dual-Indexed Mode (DIM), Alpha in Palette, and Frame Delay.
 Frame Delay is backwards compatible and will work just fine in APF2-1993-only tooling (extra field is ignored), but DIM and alpha require newer APF2 software to use.
+
+The later 2000 version of APF2 was made by Focal Development Company (dba Focal Laboratories), one of the successor companies to Aperture Science, Inc. Focal made the format's spec open (albiet paywalled) in 2002.
 
 ## APF2 Format Information
 APF2 is an ASCII file that can be identified by its plaintext header: 
@@ -71,13 +73,27 @@ R#G#B#R#G#B#R#G#B#C#M#Y#C#M#Y#C#M#Y#b#g#W#b#g#W#b#g#W#
 B#G#R#B#G#R#B#G#R#Y#M#C#Y#M#C#Y#M#C#W#g#b#W#g#b#W#g#b#
 ```
 
+## Encoders
+APF2 has had a few different encoder/decoder implementations with various licenses.
+| Name | Developer  | Free? | Notes |
+|-----------|------|------|------|
+| ApertureDraw 2.0A+ | Aperture Science, Inc. | No, commercial software | used APF2 as a project format. 1994 exporting was added in 2.4A |
+| libapf2 | Independent Scientists Group (ISG) | Yes, BSD-3 Clause | Reverse engineered, limited support for format features |
+| apf2k | Focal Laboratories | No, Focal Open Freeware License | Higher Quality Encoder, considered to be the reference implementation |
+| appiclib | Marvin R. and contributors | Yes, GNU GPL | Fork of libapf2 with more broad support for the 1993 and 1994 versions of the format |
+| alir2 | The ImageWizard Project | Yes, GNU GPL | Decoder only |
+| apftool | Maristocratic Communications | Yes, Apache 2.0 License | Implements all APF2-2000 features |
+| apf2tran | Mari K. | Yes, Apache 2.0 License | Simple Lossless and Near-lossless transcoding of PGM/PPM files, and editing existing APF2s only |
+| jspf2 | Mari K. | Yes, MIT License | Web browser polyfill |
+
 ## Trivia
 * For 1993, this format is rather dated, with its limited 95 color palette and simplistic compression, when GIF existed for 6 years at the time. The 1994 revision helps but it still lags behind formats such as Lossless JPEG, ignoring alpha support.
 * Despite the simple compression, APF2 can sometimes compress an image better than an RGB PNG, and occasionally even Indexed PNG.
-* Due to using pure ASCII, APF2s can technically be packaged using 7 bits for a character rather than 8, reducing file sizes by ~12.5%. This is called an A2CI (APF2 Compacted Image).
-* APF2 also has unofficial provisions for gz compression, going under the name A2G (APF2 GZip).
+* Due to using pure ASCII, APF2s can technically be packaged using 7 bits for a character rather than 8, reducing file sizes by ~12.5%. This is informally called an A2CI (APF2 Compacted Image).
+* APF2 also has provisions for gz compression, going under the name a2gz (apf2 GZip).
 * APF2 is sometimes used to embed images directly into code and documents, similarly to XBM and XPM.
-* The format only got 1 major update past inception, the 1994 revision. The 9025 color palette is notable as most paletted images only go up to 256 colors, 1 byte per color.
+* The format had 2 major update past inception, the 1994 revision and the 2000 revision. The 9025 color palette is notable as most paletted images only go up to 256 colors, 1 byte per color.
+* The 2000 version of APF2 adds a ton of new features (such as support for up to 32-bit RGBA, Top-down scanning, and disabling the RLE), making it a genuinely versatile image format
 * If the M flag is unset but multiple data streams are present, the image can be treated as having layers, with image 0 being a composite or base for layers to overlay onto (which can be interpreted in different ways depending on the decoder and use case).
 
 <small>*This Aperture Science-related article is a stub. You can help Maripedia by adding missing information.*</small>
