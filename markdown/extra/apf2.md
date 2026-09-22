@@ -5,7 +5,7 @@
 
 | Field  | Aperture Picture Format 2  |
 |-----------|------|
-| Filename extension      | `.apf2`, `.af2`, `.a2k` (2000 varient), `.a2gz` (gzip-compressed), `.aif2` (rarely) |
+| Filename extension      | `.apf2`, `.af2`, `.a2k` (2000 variant), `.a2gz` (gzip-compressed), `.aif2` (rarely) |
 | MIME Types | `image/x-aperture-picture-1993`, `image/x-aperture-picture-1994`, `image/x-aperture-picture-2000` (stills), `video/x-aperture-picture-1993`, `video/x-aperture-picture-1994`, `video/x-aperture-picture-2000` (animations) |
 | Uniform Type Identifiers (UTI) | `com.aperturescience.apf2` |
 | Developed by | Aperture Laboratories (1993, 1994), Focal Laboratories (2000) |
@@ -18,10 +18,10 @@
 **Aperture Picture Format 2** (**APF2**, officially pronounced as "Ayph-2") is a lossless bitmap image format.
 It was designed by Aperture Laboratories in 1993 as an optimized ASCII image format using RLE and is backwards compatible with the 1985 APF.
 APF2 supports a palette of 95 colors (corresponding to the 95 printable ASCII characters), transparency (which takes up a palette space), animation, and more optimized 2-color 1985 APF-styled data.
-An APF can be trivially upgraded to APF2 with a simple header-swap.
-The format supports interleaved data, scanning the image bottom-to-top, skipping X rows in order to form a more visible image earlier into transmission.
+An APF can be trivially upgraded to APF2 with a simple header swap.
+The format supports interleaved frame data, scanning the image bottom-to-top (or top-to-bottom in the 2000 version, with the `u` flag), skipping X rows in order to form a more visible image earlier into transmission.
 
-The 1994 version of APF2 introduces 3 new features: The Dual-Indexed Mode (DIM), Alpha in Palette, and Frame Delay.
+The 1994 version of APF2 introduces 3 new features: the Dual-Indexed Mode (DIM), Alpha in Palette, and Frame Delay.
 Frame Delay is backwards compatible and will work just fine in APF2-1993-only tooling (extra field is ignored), but DIM and alpha require newer APF2 software to use.
 
 The later 2000 version of APF2 was made by Focal Development Company (dba Focal Laboratories), one of the successor companies to Aperture Science, Inc. Focal made the format's spec open (albiet paywalled) in 2002.
