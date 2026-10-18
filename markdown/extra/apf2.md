@@ -75,25 +75,25 @@ B#G#R#B#G#R#B#G#R#Y#M#C#Y#M#C#Y#M#C#W#g#b#W#g#b#W#g#b#
 
 ## Encoders
 APF2 has had a few different encoder/decoder implementations with various licenses.
-| Name | Developer | Free? | Notes |
-|-----------|------|------|------|
-| ApertureDraw 2.0A+ | Aperture Science, Inc. | No, commercial software | Used APF2 as a project format. 1994 exporting was added in 2.4A |
-| libapf2 | Independent Scientists Group (ISG) | Yes, BSD-3 Clause | Reverse engineered, limited support for format features |
-| apf2k | Focal Laboratories | No, Focal Open Freeware License | Higher Quality Encoder, considered to be the reference implementation |
-| appiclib | Marvin R. and contributors | Yes, GNU GPL | Fork of libapf2 with more broad support for the 1993 and 1994 versions of the format |
-| alir2 | The ImageWizard Project | Yes, GNU GPL | Decoder only |
-| apftool | Maristocratic Communications | Yes, Apache 2.0 License | Implements all APF2-2000 features |
-| apf2tran | Mari K. | Yes, Apache 2.0 License | Simple lossless and near-lossless transcoding of PGM/PPM files, and editing existing APF2s only |
-| jspf2 | Mari K. | Yes, MIT License | Web browser polyfill |
+| Name | Developer | Free? | Notes | CLI | Year |
+| --- | --- | --- | --- |
+| libaperturepicture | Aperture Science, Inc. | No, commercial software | libaperturepicture 2.0+, used in Aperture Software like ApertureDraw 2.0A+ | `capf`, `dapf` | 1993 |
+| libapf2 | Independent Scientists Group (ISG) | Yes, BSD-3 Clause | Reverse engineered, limited support for format features | `encapf2`, `decapf2` | 1995 |
+| apf2k | Focal Laboratories | No, Focal Open Freeware License | Higher Quality Encoder, reference implementation of STD501-2 with support for the full codestream | `capf2k`, `dapf2k` | 2000 |
+| appiclib | Marvin R. and contributors | Yes, GNU GPL | Fork of libapf2 with more broad support for the 1993 and 1994 versions of the format, Included in netpbm | `pamtoapf2`, `apf2topam` | 2002 |
+| alir2 | The ImageWizard Project | Yes, GNU GPL | Decoder only | `imagewiz` | 2006 |
+| apftool | Maristocratic Communications | Yes, Apache 2.0 License | Implements all APF2-2000 features and external compression algorithms | `apfcli` | 2011 |
+| apf2tran | Marianne Q. | Yes, Apache 2.0 License | Simple lossless and near-lossless transcoding of PGM/PPM files, and editing existing APF2s only | `apf2tran` | 2013 |
+| a2kiki | Kiranne L. | Yes, GNU AGPL | Versatile and High quality Lossy APF2 encoder | `a2kiki` | 2017 |
+| jspf2 | Jason L. | Yes, MIT License | Web browser polyfill, decoder only | N/A | 2021 |
 
 ## Trivia
 * For 1993, this format is rather dated, with its limited 95-color palette and simplistic compression, when GIF existed for 6 years at the time. The 1994 revision helps, but it still lags behind formats such as lossless JPEG, ignoring alpha support.
 * Despite the simple compression, APF2 can sometimes compress an image better than an RGB PNG with the same pixel data.
-* Due to using pure ASCII, APF2s can technically be packaged using 7 bits for a character rather than 8, reducing file sizes by ~12.5%. This is informally called an A2CI (APF2 Compacted Image).
-* APF2 also has provisions for gz compression, going under the name a2gz (apf2 GZip).
+* APF2, as defined in STD501-2, can be compressed with the following algorithms: Aperture Science's ASCIIPak (.apc/.a2c/.a2ci), Richard Greenlaw's Squeeze (.aqf/.aq2), as well as Gzip (.a2g) and Bzip2 (.a2b). Optionally, an identifying magic number can be prepended to the file to incidate it being an APF2 Image and not a generic archive.
 * APF2 is sometimes used to embed images directly into code and documents, similarly to XBM and XPM.
 * The format had 2 major updates past inception, the 1994 revision and the 2000 revision. The 9025 color palette is notable, as most paletted images only go up to 256 colors, or 1 byte per color.
-* The 2000 version of APF2 adds several new features (such as support for up to 32-bit RGBA, top-down scanning, and disabling the RLE), making it a genuinely versatile image format.
+* The 2000 version of APF2 adds several new features (such as support for up to 32-bit RGBA, top-down scanning, and disabling the RLE), making it a versatile image format.
 * If the M flag is unset but multiple data streams are present, the image can be treated as having layers, which can be interpreted in different ways depending on the decoder and use case.
 
 <small>*This Aperture Science-related article is a stub. You can help Maripedia by adding missing information.*</small>
