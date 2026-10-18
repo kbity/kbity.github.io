@@ -75,6 +75,7 @@ B#G#R#B#G#R#B#G#R#Y#M#C#Y#M#C#Y#M#C#W#g#b#W#g#b#W#g#b#
 
 ## Encoders
 APF2 has had a few different encoder/decoder implementations with various licenses.
+
 | Name | Developer | Free? | Notes | CLI | Year |
 | --- | --- | --- | --- | --- | --- |
 | libaperturepicture | Aperture Science, Inc. | No, commercial software | libaperturepicture 2.0+, used in Aperture Software like ApertureDraw 2.0A+ | `capf`, `dapf` | 1993 |

@@ -121,18 +121,93 @@ R#G#B#R#G#B#R#G#B#C#M#Y#C#M#Y#C#M#Y#b#g#W#b#g#W#b#g#W#
 B#G#R#B#G#R#B#G#R#Y#M#C#Y#M#C#Y#M#C#W#g#b#W#g#b#W#g#b#
 </code></pre>
 <h2>Encoders</h2>
-<p>APF2 has had a few different encoder/decoder implementations with various licenses.
-| Name | Developer | Free? | Notes | CLI | Year |
-| --- | --- | --- | --- | --- | --- |
-| libaperturepicture | Aperture Science, Inc. | No, commercial software | libaperturepicture 2.0+, used in Aperture Software like ApertureDraw 2.0A+ | <code>capf</code>, <code>dapf</code> | 1993 |
-| libapf2 | Independent Scientists Group (ISG) | Yes, BSD-3 Clause | Reverse engineered, limited support for format features | <code>encapf2</code>, <code>decapf2</code> | 1995 |
-| apf2k | Focal Laboratories | No, Focal Open Freeware License | Higher Quality Encoder, reference implementation of STD501-2 with support for the full codestream | <code>capf2k</code>, <code>dapf2k</code> | 2000 |
-| appiclib | Marvin R. and contributors | Yes, GNU GPL | Fork of libapf2 with more broad support for the 1993 and 1994 versions of the format, Included in netpbm | <code>pamtoapf2</code>, <code>apf2topam</code> | 2002 |
-| alir2 | The ImageWizard Project | Yes, GNU GPL | Decoder only | <code>imagewiz</code> | 2006 |
-| apftool | Maristocratic Communications | Yes, Apache 2.0 License | Implements all APF2-2000 features and external compression algorithms | <code>apfcli</code> | 2011 |
-| apf2tran | Marianne Q. | Yes, Apache 2.0 License | Simple lossless and near-lossless transcoding of PGM/PPM files, and editing existing APF2s only | <code>apf2tran</code> | 2013 |
-| a2kiki | Kiranne L. | Yes, GNU AGPL | Versatile and High quality Lossy APF2 encoder | <code>a2kiki</code> | 2017 |
-| jspf2 | Jason L. | Yes, MIT License | Web browser polyfill, decoder only | N/A | 2021 |</p>
+<p>APF2 has had a few different encoder/decoder implementations with various licenses.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Developer</th>
+<th>Free?</th>
+<th>Notes</th>
+<th>CLI</th>
+<th>Year</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>libaperturepicture</td>
+<td>Aperture Science, Inc.</td>
+<td>No, commercial software</td>
+<td>libaperturepicture 2.0+, used in Aperture Software like ApertureDraw 2.0A+</td>
+<td><code>capf</code>, <code>dapf</code></td>
+<td>1993</td>
+</tr>
+<tr>
+<td>libapf2</td>
+<td>Independent Scientists Group (ISG)</td>
+<td>Yes, BSD-3 Clause</td>
+<td>Reverse engineered, limited support for format features</td>
+<td><code>encapf2</code>, <code>decapf2</code></td>
+<td>1995</td>
+</tr>
+<tr>
+<td>apf2k</td>
+<td>Focal Laboratories</td>
+<td>No, Focal Open Freeware License</td>
+<td>Higher Quality Encoder, reference implementation of STD501-2 with support for the full codestream</td>
+<td><code>capf2k</code>, <code>dapf2k</code></td>
+<td>2000</td>
+</tr>
+<tr>
+<td>appiclib</td>
+<td>Marvin R. and contributors</td>
+<td>Yes, GNU GPL</td>
+<td>Fork of libapf2 with more broad support for the 1993 and 1994 versions of the format, Included in netpbm</td>
+<td><code>pamtoapf2</code>, <code>apf2topam</code></td>
+<td>2002</td>
+</tr>
+<tr>
+<td>alir2</td>
+<td>The ImageWizard Project</td>
+<td>Yes, GNU GPL</td>
+<td>Decoder only</td>
+<td><code>imagewiz</code></td>
+<td>2006</td>
+</tr>
+<tr>
+<td>apftool</td>
+<td>Maristocratic Communications</td>
+<td>Yes, Apache 2.0 License</td>
+<td>Implements all APF2-2000 features and external compression algorithms</td>
+<td><code>apfcli</code></td>
+<td>2011</td>
+</tr>
+<tr>
+<td>apf2tran</td>
+<td>Marianne Q.</td>
+<td>Yes, Apache 2.0 License</td>
+<td>Simple lossless and near-lossless transcoding of PGM/PPM files, and editing existing APF2s only</td>
+<td><code>apf2tran</code></td>
+<td>2013</td>
+</tr>
+<tr>
+<td>a2kiki</td>
+<td>Kiranne L.</td>
+<td>Yes, GNU AGPL</td>
+<td>Versatile and High quality Lossy APF2 encoder</td>
+<td><code>a2kiki</code></td>
+<td>2017</td>
+</tr>
+<tr>
+<td>jspf2</td>
+<td>Jason L.</td>
+<td>Yes, MIT License</td>
+<td>Web browser polyfill, decoder only</td>
+<td>N/A</td>
+<td>2021</td>
+</tr>
+</tbody>
+</table>
 <h2>Trivia</h2>
 <ul>
 <li>For 1993, this format is rather dated, with its limited 95-color palette and simplistic compression, when GIF existed for 6 years at the time. The 1994 revision helps, but it still lags behind formats such as lossless JPEG, ignoring alpha support.</li>
