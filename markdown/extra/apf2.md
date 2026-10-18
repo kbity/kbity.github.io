@@ -76,7 +76,7 @@ B#G#R#B#G#R#B#G#R#Y#M#C#Y#M#C#Y#M#C#W#g#b#W#g#b#W#g#b#
 ## Encoders
 APF2 has had a few different encoder/decoder implementations with various licenses.
 | Name | Developer | Free? | Notes | CLI | Year |
-| --- | --- | --- | --- |
+| --- | --- | --- | --- | --- | --- |
 | libaperturepicture | Aperture Science, Inc. | No, commercial software | libaperturepicture 2.0+, used in Aperture Software like ApertureDraw 2.0A+ | `capf`, `dapf` | 1993 |
 | libapf2 | Independent Scientists Group (ISG) | Yes, BSD-3 Clause | Reverse engineered, limited support for format features | `encapf2`, `decapf2` | 1995 |
 | apf2k | Focal Laboratories | No, Focal Open Freeware License | Higher Quality Encoder, reference implementation of STD501-2 with support for the full codestream | `capf2k`, `dapf2k` | 2000 |
